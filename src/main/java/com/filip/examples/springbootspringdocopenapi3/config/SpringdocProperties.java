@@ -28,19 +28,19 @@ public class SpringdocProperties {
     @Value("${springdocproperties.apiinfo.version}")
     private String version;
 
-    @Value("${springdocproperties.apiinfo.contact.name}")
+    @Value("${springdocproperties.apiinfo.contact.name:defaultempty}")
     private String contactName;
 
-    @Value("${springdocproperties.apiinfo.contact.url}")
+    @Value("${springdocproperties.apiinfo.contact.url:defaultempty}")
     private String contactUrl;
 
-    @Value("${springdocproperties.apiinfo.contact.email}")
+    @Value("${springdocproperties.apiinfo.contact.email:defaultempty}")
     private String contactEmail;
 
-    @Value("${springdocproperties.apiinfo.license.name}")
+    @Value("${springdocproperties.apiinfo.license.name:defaultempty}")
     private String licenseName;
 
-    @Value("${springdocproperties.apiinfo.license.url}")
+    @Value("${springdocproperties.apiinfo.license.url:defaultempty}")
     private String licenseUrl;
 
     private final ApiInfo apiInfo = new ApiInfo();

@@ -112,4 +112,9 @@ public class PetServiceImpl implements IPetService {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Couldn't upload file", e);
         }
     }
+
+    @Override
+    public List<Pet> getall() {
+        return petRepository.findAll();
+    }
 }

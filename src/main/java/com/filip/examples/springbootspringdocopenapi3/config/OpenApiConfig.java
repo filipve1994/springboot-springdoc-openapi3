@@ -43,6 +43,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static com.filip.examples.springbootspringdocopenapi3.config.OpenApiConstants.API_KEY_SECURITY_REQUIREMENT;
+import static com.filip.examples.springbootspringdocopenapi3.config.OpenApiConstants.PETSTORE_AUTH_SECURITY_REQUIREMENT;
+import static com.filip.examples.springbootspringdocopenapi3.config.OpenApiConstants.PET_TAG;
+import static com.filip.examples.springbootspringdocopenapi3.config.OpenApiConstants.READ_PETS_SECURITY_REQUIREMENT_SCOPE;
+import static com.filip.examples.springbootspringdocopenapi3.config.OpenApiConstants.STORE_TAG;
+import static com.filip.examples.springbootspringdocopenapi3.config.OpenApiConstants.USER_TAG;
+import static com.filip.examples.springbootspringdocopenapi3.config.OpenApiConstants.WRITE_PETS_SECURITY_REQUIREMENT_SCOPE;
+
 @Configuration
 public class OpenApiConfig {
 
@@ -78,7 +86,7 @@ public class OpenApiConfig {
         OpenAPI openAPI = new OpenAPI();
         openAPI.setInfo(info());
         openAPI.setExternalDocs(externalDocumentation());
-        openAPI.setServers(servers());
+        //openAPI.setServers(servers());
         openAPI.setSecurity(security());
         openAPI.setTags(tags());
         openAPI.setPaths(paths());
@@ -97,8 +105,15 @@ public class OpenApiConfig {
 
         Contact contact = new Contact();
         contact.setName(springdocProperties.getContactName());
-        contact.setUrl(springdocProperties.getContactUrl());
-        contact.setEmail(springdocProperties.getContactEmail());
+        logger.info("contact name is : " + contact.getName());
+        if (!springdocProperties.getContactUrl().equals("defaultempty")) {
+            contact.setUrl(springdocProperties.getContactUrl());
+            logger.info("contact url is : " + contact.getUrl());
+        }
+        if (!springdocProperties.getContactEmail().equals("defaultempty")) {
+            contact.setEmail(springdocProperties.getContactEmail());
+            logger.info("contact email is : " + contact.getEmail());
+        }
         info.setContact(contact);
 
         License license = new License();
@@ -143,15 +158,16 @@ public class OpenApiConfig {
         List<SecurityRequirement> securityRequirements = new ArrayList<>();
 
         SecurityRequirement securityRequirement = new SecurityRequirement();
-        securityRequirement.addList("api_key");
-        securityRequirement.addList("petstore_auth", Arrays.asList("write:pets", "read:pets"));
+        securityRequirement.addList(API_KEY_SECURITY_REQUIREMENT);
+        securityRequirement.addList(PETSTORE_AUTH_SECURITY_REQUIREMENT,
+                Arrays.asList(WRITE_PETS_SECURITY_REQUIREMENT_SCOPE, READ_PETS_SECURITY_REQUIREMENT_SCOPE));
         return securityRequirements;
     }
 
     private List<Tag> tags() {
         List<Tag> tags = new ArrayList<>();
         tags.add(new Tag()
-                .name("pet")
+                .name(PET_TAG)
                 .description("Everything about your Pets")
                 .externalDocs(new ExternalDocumentation()
                         .url("http://swagger.io")
@@ -159,8 +175,17 @@ public class OpenApiConfig {
                 )
         );
         tags.add(new Tag()
-                .name("user")
+                .name(USER_TAG)
                 .description("Operations about user")
+                .externalDocs(new ExternalDocumentation()
+                        .url("http://swagger.io")
+                        .description("Find out more about Swagger")
+                )
+        );
+
+        tags.add(new Tag()
+                .name(STORE_TAG)
+                .description("Operations about store")
                 .externalDocs(new ExternalDocumentation()
                         .url("http://swagger.io")
                         .description("Find out more about Swagger")
@@ -244,7 +269,6 @@ public class OpenApiConfig {
         //parameterMap.put("x-correlation-id-2", cidParam2);
 
 
-
         Parameter lineidParam = new Parameter()
                 .name("lineid")
                 .description("LineId Path parameter")
@@ -322,8 +346,6 @@ public class OpenApiConfig {
 
         return linkMap;
     }
-
-
 
 
 }

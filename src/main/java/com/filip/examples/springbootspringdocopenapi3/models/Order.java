@@ -84,7 +84,7 @@ public class Order implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
 
-    @Schema(description = "")
+    @Schema(description = "", defaultValue = "false")
     @JsonProperty("complete")
     private boolean complete;
 

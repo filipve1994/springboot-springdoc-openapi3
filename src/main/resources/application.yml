@@ -10,6 +10,14 @@ springdoc:
 server:
   port: 8090
   address: localhost
+  http2:
+    enabled: true
+  servlet:
+    context-path: /
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
 
 
 application:
@@ -18,13 +26,16 @@ application:
 springdocproperties:
   apiinfo:
     title: "SPRINGDOC OPENAPI 3 SAMPLE"
-    description: "API description oh yeah"
+#    description: "API description oh yeah"
+    description: "This is a sample server Petstore server.  You can find out more about
+    Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).
+    For this sample, you can use the api key `special-key` to test the authorization filters."
     terms-of-service: "http://swagger.io/terms/"
     version: '@project.version@'
     contact:
-      name: "filip"
-      url: "http://"
-      email: "abc@email.com"
+      name: "Filip Vanden Eynde"
+#      url: "http://"
+#      email: "abc@email.com"
     license:
       name: "Apache 2.0"
       url: "http://springdoc.org"
@@ -68,6 +79,18 @@ spring:
       settings:
         trace: false
         web-allow-others: false
+  resources:
+    cache:
+      period: 31536000
+      cachecontrol:
+        max-age: 31536000
+    chain:
+      html-application-cache: true
+      enabled: true
+      strategy:
+        content:
+          enabled: true
+          paths: /webjars/swagger-ui/**.*
 
 #  spring.datasource.url=jdbc:h2:~/test
 #  spring.datasource.driverClassName=org.h2.Driver

@@ -1,5 +1,6 @@
 package com.filip.examples.springbootspringdocopenapi3.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -40,6 +41,7 @@ public class Category implements Serializable {
     @JsonProperty("name")
     private String name = null;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Pet> pets;
 

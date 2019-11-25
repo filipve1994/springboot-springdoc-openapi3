@@ -24,5 +24,5 @@ public interface IUserService {
     void updateUser(String username, User user);
 
 
-
+    List<User> getall();
 }

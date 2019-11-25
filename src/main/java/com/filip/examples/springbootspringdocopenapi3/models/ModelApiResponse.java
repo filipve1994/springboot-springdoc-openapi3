@@ -24,15 +24,15 @@ import java.io.Serializable;
 //@Table(name = "CATEGORY")
 public class ModelApiResponse implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Schema(description = "")
-    @JsonProperty("id")
-    private Long id = null;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Schema(description = "")
+//    @JsonProperty("id")
+//    private Long id = null;
 
-    @Schema(description = "")
-    @JsonProperty("name")
-    private String name = null;
+//    @Schema(description = "")
+//    @JsonProperty("name")
+//    private String name = null;
 
     @Schema(description = "")
     @JsonProperty("code")

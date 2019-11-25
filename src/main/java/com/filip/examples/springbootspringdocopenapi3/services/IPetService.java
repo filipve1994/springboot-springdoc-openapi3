@@ -26,4 +26,5 @@ public interface IPetService {
     public ModelApiResponse uploadFile(Long petId, String additionalMetadata, @Valid MultipartFile file);
 
 
+    public List<Pet> getall();
 }

@@ -1,5 +1,6 @@
 package com.filip.examples.springbootspringdocopenapi3.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -42,6 +43,7 @@ public class Tag implements Serializable {
     private String name = null;
 
     @ManyToMany(mappedBy = "tags")
+    @JsonIgnore
     private List<Pet> pets;
 
     public Tag() {
