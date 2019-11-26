@@ -1,0 +1,12 @@
+# https://attacomsian.com/blog/spring-data-jpa-h2-database
+# https://www.baeldung.com/spring-boot-h2-database
+spring:
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DBNAME:test}?serverTimezone=UTC&useLegacyDatetimeCode=false
+    driver-class-name:
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create

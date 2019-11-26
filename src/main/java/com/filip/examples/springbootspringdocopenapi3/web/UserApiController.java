@@ -1,5 +1,7 @@
 package com.filip.examples.springbootspringdocopenapi3.web;
 
+import com.filip.examples.springbootspringdocopenapi3.errorhandling.models.ApiError;
+import com.filip.examples.springbootspringdocopenapi3.errorhandling.models.ApiValidationError;
 import com.filip.examples.springbootspringdocopenapi3.models.User;
 import com.filip.examples.springbootspringdocopenapi3.services.IUserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -46,13 +48,14 @@ public class UserApiController {
             @ApiResponse(responseCode = "200", description = "Success")
     })
     @GetMapping(value = "/user/all", produces = {APPLICATION_JSON_VALUE, APPLICATION_XML_VALUE})
-    public ResponseEntity getAll(){
+    public ResponseEntity getAll() {
         return ResponseEntity.ok(userService.getall());
     }
 
     @Operation(summary = "Create user", tags = {USER_TAG})
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "successful operation")
+            @ApiResponse(responseCode = "200", description = "successful operation"),
+            @ApiResponse(responseCode = "400", description = "Invalid request param", content = @Content(schema = @Schema(implementation = ApiError.class))),
     })
     @PostMapping(value = "/user", consumes = {APPLICATION_JSON_VALUE})
     public void createUser(@Parameter(description = "Created user object", required = true) @Valid @RequestBody User user) {
@@ -74,6 +77,16 @@ public class UserApiController {
     })
     @PostMapping(value = "/user/createWithList", consumes = {APPLICATION_JSON_VALUE})
     public void createUsersWithListInput(@Parameter(description = "List of user object", required = true) @Valid @RequestBody List<User> users) {
+        userService.createUsersWithListInput(users);
+    }
+
+    @Operation(summary = "Creates list of users with given input array2", tags = {USER_TAG})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation")
+    })
+    @PostMapping(value = "/user/createWithList2", consumes = {APPLICATION_JSON_VALUE})
+    public void createUsersWithListInput2(@Parameter(description = "List of user object", required = true)
+                                          @Valid @RequestBody List<User> users) {
         userService.createUsersWithListInput(users);
     }
 

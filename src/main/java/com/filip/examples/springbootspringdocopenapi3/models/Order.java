@@ -3,6 +3,7 @@ package com.filip.examples.springbootspringdocopenapi3.models;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.filip.examples.springbootspringdocopenapi3.models.auditing.Auditable;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -29,7 +30,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @Entity
 @Table(name = "ORDERS")
-public class Order implements Serializable {
+public class Order extends Auditable<String> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,6 +60,7 @@ public class Order implements Serializable {
         StatusEnum(String value) {
             this.value = value;
         }
+
         @JsonValue
         public String getValue() {
             return value;
@@ -68,6 +70,7 @@ public class Order implements Serializable {
         public String toString() {
             return String.valueOf(value);
         }
+
         @JsonCreator
         public static StatusEnum fromValue(String text) {
             for (StatusEnum b : StatusEnum.values()) {

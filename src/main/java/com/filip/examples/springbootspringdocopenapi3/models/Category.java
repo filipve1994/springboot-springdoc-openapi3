@@ -2,6 +2,7 @@ package com.filip.examples.springbootspringdocopenapi3.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.filip.examples.springbootspringdocopenapi3.models.auditing.Auditable;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -9,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -29,7 +31,7 @@ import java.util.Set;
 @EqualsAndHashCode(exclude = {"pets"})
 @Entity
 @Table(name = "CATEGORY")
-public class Category implements Serializable {
+public class Category extends Auditable<String> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,0 +1,21 @@
+#Please note the DB_CLOSE_DELAY=-1 parameter appended to the end of the database URL.
+# When working with an in-memory database, we need to specify this, so the JPA implementation, which is Hibernate,
+# won't close the database while the application is running.
+spring:
+  datasource:
+    url: jdbc:hsqldb:mem:testdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
