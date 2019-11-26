@@ -406,7 +406,7 @@
 
 ## annotations
 - https://www.google.com/search?q=spring+boot+custom+annotation&rlz=1C1CHBD_enBE837BE837&oq=spring+boot+custom+ann&aqs=chrome.1.69i57j0l5.4540j0j1&sourceid=chrome&ie=UTF-8
-- 
+- https://medium.com/@wkrzywiec/how-to-check-if-user-exist-in-database-using-hibernate-validator-eab110429a6
 - 
 - 
 - 
@@ -433,7 +433,7 @@
 - https://www.springboottutorial.com/
 - https://loiane.com/
 - https://www.mkyong.com/
-- 
+- https://attacomsian.com/
 - 
 - 
 

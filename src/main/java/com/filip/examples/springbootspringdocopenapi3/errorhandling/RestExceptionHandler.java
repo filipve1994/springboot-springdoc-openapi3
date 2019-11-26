@@ -2,11 +2,15 @@ package com.filip.examples.springbootspringdocopenapi3.errorhandling;
 
 import com.filip.examples.springbootspringdocopenapi3.errorhandling.exceptions.EntityNotFoundException;
 import com.filip.examples.springbootspringdocopenapi3.errorhandling.exceptions.IncorrectDateException;
+import com.filip.examples.springbootspringdocopenapi3.errorhandling.exceptions.UserNotFoundException;
+import com.filip.examples.springbootspringdocopenapi3.errorhandling.exceptions.UsernameAlreadyExistsException;
 import com.filip.examples.springbootspringdocopenapi3.errorhandling.models.ApiError;
 import org.hibernate.exception.SQLGrammarException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,6 +34,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import javax.validation.ConstraintViolationException;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.CONFLICT;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 
@@ -201,7 +207,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         logger.info("handleHttpMessageNotWritable using!");
 
         String error = "Error writing JSON output";
-        return buildResponseEntity(new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, error, ex));
+        return buildResponseEntity(new ApiError(INTERNAL_SERVER_ERROR, error, ex));
         //return super.handleHttpMessageNotWritable(ex, headers, status, request);
     }
 
@@ -284,13 +290,45 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(value = {
-            EntityNotFoundException.class
+            EntityNotFoundException.class,
+            UserNotFoundException.class
     })
     protected ResponseEntity<Object> handleEntityNotFound(RuntimeException ex) {
         logger.info("RestExceptionhandler - handleEntityNotFound");
 
         ApiError apiError = new ApiError(NOT_FOUND);
         apiError.setMessage(ex.getMessage());
+        return buildResponseEntity(apiError);
+    }
+
+    @ExceptionHandler(value = {
+            InvalidDataAccessApiUsageException.class,
+            DataAccessException.class,
+            UsernameAlreadyExistsException.class,
+//      UserAlreadyHasCustomerException.class,
+//      UserAlreadyBeneficiaryOfCustomerException.class,
+//      ParkingServiceNotAvailableException.class,
+//      SubscriptionServiceNotAvailableException.class,
+//      AuthenticationServiceNotAvailableException.class
+    })
+    protected ResponseEntity<Object> handleConflict(RuntimeException ex) {
+        logger.info("RestExceptionhandler - handleConflict");
+
+        ApiError apiError = new ApiError(CONFLICT);
+        apiError.setMessage(ex.getMessage());
+        return buildResponseEntity(apiError);
+    }
+
+    @ExceptionHandler({
+            NullPointerException.class,
+            IllegalArgumentException.class,
+            IllegalStateException.class
+    })
+    public ResponseEntity<Object> handleInternal(final RuntimeException ex,
+                                                 final WebRequest request) {
+        ApiError apiError = new ApiError(INTERNAL_SERVER_ERROR);
+        apiError.setMessage(ex.getMessage());
+
         return buildResponseEntity(apiError);
     }
 
@@ -320,7 +358,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         if (ex.getCause() instanceof ConstraintViolationException) {
             return buildResponseEntity(new ApiError(HttpStatus.CONFLICT, "Database error", ex.getCause()));
         }
-        return buildResponseEntity(new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex));
+        return buildResponseEntity(new ApiError(INTERNAL_SERVER_ERROR, ex));
     }
 
     /**
@@ -334,7 +372,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
         logger.info("SQLGrammarExceptions java version using!");
 
-        ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex);
+        ApiError apiError = new ApiError(INTERNAL_SERVER_ERROR, ex);
         logger.info(ex.getMessage()); // could not extract ResultSet
         logger.info(ex.getSQLException().getMessage()); // ORA-00904: "B"."DISTANCE_FROM": invalid identifier
         apiError.setMessage("SQL sent to the database was invalid. It could be due to a syntax error or an invalid object reference. " +

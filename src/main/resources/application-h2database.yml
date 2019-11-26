@@ -1,9 +1,11 @@
 # https://attacomsian.com/blog/spring-data-jpa-h2-database
 # https://www.baeldung.com/spring-boot-h2-database
+# https://stackoverflow.com/questions/31498682/spring-boot-intellij-embedded-database-headache
 spring:
   datasource:
     url: jdbc:h2:mem:testdb
-    #    url: jdbc:h2:~/test
+#    url: jdbc:h2:~/testd
+#    url: jdbc:h2:~/testdb;AUTO_SERVER=TRUE
     driver-class-name: org.h2.Driver
     username: sa
     password:
@@ -12,7 +14,7 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
   h2:
     console:
       enabled: true

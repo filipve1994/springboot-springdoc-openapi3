@@ -1,7 +1,6 @@
-package com.filip.examples.springbootspringdocopenapi3.models;
+package com.filip.examples.springbootspringdocopenapi3.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.filip.examples.springbootspringdocopenapi3.models.auditing.Auditable;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -10,16 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @Getter
 @Setter
@@ -27,30 +19,22 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-@Entity
-@Table(name = "USER")
-public class User extends Auditable<String> implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Schema(description = "")
-    @JsonProperty("id")
-    private Long id = null;
+public class NewUserDto {
 
     @Schema(description = "", example = "FilipUser")
     @JsonProperty("username")
-    @Column(unique = true)
     private String username = null;
 
     @Schema(description = "", example = "Filip")
     @JsonProperty("firstName")
-    @NotNull(message = "Firstname cannot be null")
-    @NotEmpty(message = "custom message - must not be empty")
-    @Size(min = 1, message = "custom message - size must be between 1 and 2147483647")
+    @NotNull(message = "firstName cannot be null")
+    @NotEmpty(message = "firstName must not be empty")
     private String firstName = null;
 
     @Schema(description = "", example = "Vanden Eynde")
     @JsonProperty("lastName")
+    @NotNull(message = "lastName cannot be null")
+    @NotEmpty(message = "lastName must not be empty")
     private String lastName = null;
 
     @Schema(description = "", example = "toolongemail@gmail.com")
@@ -66,12 +50,11 @@ public class User extends Auditable<String> implements Serializable {
     @JsonProperty("password")
     private String password = null;
 
+
     @Schema(description = "", example = "123-456-789")
     @JsonProperty("phone")
+    @NotNull(message = "Phone cannot be null")
+    @NotEmpty(message = "Phone must not be empty")
+    @Size(min = 6, max = 20)
     private String phone = null;
-
-    @Schema(description = "User Status", example = "1")
-    @JsonProperty("userStatus")
-    private Integer userStatus = null;
-
 }
