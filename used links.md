@@ -445,6 +445,12 @@
 - 
 - 
 
+## jpa relations
+- https://hellokoding.com/jpa-many-to-many-relationship-mapping-example-with-spring-boot-hsql/
+- https://hellokoding.com/jpa-one-to-many-relationship-mapping-example-with-spring-boot-hsql/
+- https://hellokoding.com/jpa-many-to-many-extra-columns-relationship-mapping-example-with-spring-boot-hsql/
+- 
+
 
 ## subjects to lookup
 - jpa relationships
