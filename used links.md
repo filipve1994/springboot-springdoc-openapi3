@@ -189,7 +189,15 @@
 - https://www.baeldung.com/security-spring
 - https://www.baeldung.com/spring-security-logout
 - https://www.baeldung.com/security-none-filters-none-access-permitAll
+- https://www.google.com/search?q=spring+boot+rest+api+authentication&rlz=1C1CHBD_enBE837BE837&oq=spring+boot+rest+api+auth&aqs=chrome.2.69i57j0l5.4144j0j1&sourceid=chrome&ie=UTF-8
+- https://www.google.com/search?q=spring+boot+security&rlz=1C1CHBD_enBE837BE837&oq=spring+boot+security&aqs=chrome..69i57j69i65l2j69i60l3.2655j0j1&sourceid=chrome&ie=UTF-8
 - 
+- 
+- 
+- 
+
+## jwt security
+- https://www.google.com/search?q=spring+boot+jwt+security&rlz=1C1CHBD_enBE837BE837&oq=spring+boot+jwt+security&aqs=chrome..69i57j0l2j69i65l3.4060j0j1&sourceid=chrome&ie=UTF-8
 - 
 - 
 - 
@@ -208,7 +216,7 @@
 - https://www.baeldung.com/spring-websockets-sendtouser
 - https://www.baeldung.com/spring-security-websockets
 - https://www.baeldung.com/websockets-spring
-- 
+- https://www.google.com/search?q=spring+boot+websocket+message+broker&rlz=1C1CHBD_enBE837BE837&oq=spring+boot+websocket+message&aqs=chrome.1.69i57j0l4j69i65.4648j0j1&sourceid=chrome&ie=UTF-8
 - 
 - 
 - 
@@ -310,6 +318,9 @@
 - https://www.baeldung.com/rest-api-pagination-in-spring
 - https://loiane.com/2019/01/crud-rest-api-using-spring-boot-2-hibernate-jpa-and-mysql/
 - https://www.springboottutorial.com/spring-boot-crud-rest-service-with-jpa-hibernate
+- https://www.google.com/search?q=spring+boot+rest+api+authentication&rlz=1C1CHBD_enBE837BE837&oq=spring+boot+rest+api+auth&aqs=chrome.2.69i57j0l5.4144j0j1&sourceid=chrome&ie=UTF-8
+- https://www.google.com/search?rlz=1C1CHBD_enBE837BE837&sxsrf=ACYBGNQ3vbVTW8s-CHKx5ikMWPGML42tfQ%3A1574774820564&ei=JCjdXdWCIque1fAPl-SsoAE&q=spring+boot+crud+rest+api&oq=spring+boot+crud+rest+api&gs_l=psy-ab.3..0i71l4.837.2926..3845...0.2..2.0.0.......10....1..gws-wiz.Z3lP3QzPfug&ved=0ahUKEwjVpJ-u_YfmAhUrTxUIHRcyCxQQ4dUDCAs&uact=5
+- 
 - 
 
 ## spring boot dto
@@ -378,6 +389,11 @@
 - https://www.baeldung.com/rabbitmq-spring-amqp
 - https://www.baeldung.com/spring-amqp
 - 
+- https://www.google.com/search?q=spring+boot+message+broker&rlz=1C1CHBD_enBE837BE837&oq=spring+boot+message+br&aqs=chrome.1.69i57j0l5.5056j0j1&sourceid=chrome&ie=UTF-8
+- 
+- 
+- 
+- 
 
 ## spring session
 - https://www.baeldung.com/spring-mvc-custom-handler-interceptor
@@ -416,6 +432,8 @@
 - https://www.callicoder.com/
 - https://www.springboottutorial.com/
 - https://loiane.com/
+- https://www.mkyong.com/
+- 
 - 
 - 
 
