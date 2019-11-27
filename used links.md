@@ -253,6 +253,10 @@
 - https://www.baeldung.com/spring-boot-sqlite
 - https://www.baeldung.com/spring-boot-sql-import-files
 - https://www.baeldung.com/spring-lazy-annotation
+- https://www.mkyong.com/spring-boot/spring-boot-spring-data-jpa-postgresql/
+- 
+- 
+- 
 - 
 
 ## jpa
@@ -449,6 +453,18 @@
 - https://hellokoding.com/jpa-many-to-many-relationship-mapping-example-with-spring-boot-hsql/
 - https://hellokoding.com/jpa-one-to-many-relationship-mapping-example-with-spring-boot-hsql/
 - https://hellokoding.com/jpa-many-to-many-extra-columns-relationship-mapping-example-with-spring-boot-hsql/
+- https://hellokoding.com/jpa-one-to-one-foreign-key-relationship-mapping-example-with-spring-boot-hsql/
+- 
+
+## mail
+- https://howtodoinjava.com/spring-boot2/send-email-with-attachment/
+- https://docs.microsoft.com/en-us/outlook/rest/java-tutorial
+- https://memorynotfound.com/spring-mail-sending-email-inline-attachment-example/
+- https://www.javadream.in/spring-boot-send-email/
+- https://www.technicalkeeda.com/spring-boot-tutorials/how-to-send-email-using-spring-boot
+- https://www.quickprogrammingtips.com/spring-boot/how-to-send-email-from-spring-boot-applications.html
+- https://www.baeldung.com/spring-email
+- https://www.mkyong.com/spring-boot/spring-boot-how-to-send-email-via-smtp/
 - 
 
 

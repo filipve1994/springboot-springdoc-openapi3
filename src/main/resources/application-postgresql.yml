@@ -2,10 +2,10 @@
 # https://www.baeldung.com/spring-boot-h2-database
 spring:
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DBNAME:test}?serverTimezone=UTC&useLegacyDatetimeCode=false&useSSL=false
+    url: jdbc:mysql://${POSTGRESQL_HOST:localhost}:${POSTGRESQL_PORT:5432}/${POSTGRESQL_DBNAME:test}
 #    driver-class-name:
-    username: mysqlusername
-    password: mysqlpassword
+    username: postgres
+    password: password
     hikari:
       connection-timeout: 20000
       maximum-pool-size: 5
