@@ -1,7 +1,9 @@
 package com.filip.examples.springbootspringdocopenapi3.errorhandling;
 
+import com.filip.examples.springbootspringdocopenapi3.errorhandling.exceptions.AppException;
 import com.filip.examples.springbootspringdocopenapi3.errorhandling.exceptions.EntityNotFoundException;
 import com.filip.examples.springbootspringdocopenapi3.errorhandling.exceptions.IncorrectDateException;
+import com.filip.examples.springbootspringdocopenapi3.errorhandling.exceptions.ResourceNotFoundException;
 import com.filip.examples.springbootspringdocopenapi3.errorhandling.exceptions.UserNotFoundException;
 import com.filip.examples.springbootspringdocopenapi3.errorhandling.exceptions.UsernameAlreadyExistsException;
 import com.filip.examples.springbootspringdocopenapi3.errorhandling.models.ApiError;
@@ -17,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingPathVariableException;
@@ -291,7 +294,9 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {
             EntityNotFoundException.class,
-            UserNotFoundException.class
+            UserNotFoundException.class,
+            UsernameNotFoundException.class,
+            ResourceNotFoundException.class,
     })
     protected ResponseEntity<Object> handleEntityNotFound(RuntimeException ex) {
         logger.info("RestExceptionhandler - handleEntityNotFound");
@@ -322,7 +327,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({
             NullPointerException.class,
             IllegalArgumentException.class,
-            IllegalStateException.class
+            IllegalStateException.class,
+            AppException.class,
     })
     public ResponseEntity<Object> handleInternal(final RuntimeException ex,
                                                  final WebRequest request) {

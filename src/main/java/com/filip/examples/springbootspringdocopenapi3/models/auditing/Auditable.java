@@ -1,12 +1,14 @@
 package com.filip.examples.springbootspringdocopenapi3.models.auditing;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -16,6 +18,10 @@ import java.util.Date;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(
+        value = {"creationDate", "lastModifiedDate"},
+        allowGetters = true
+)
 public abstract class Auditable<U> {
 
 //    @CreatedBy
@@ -37,6 +43,7 @@ public abstract class Auditable<U> {
 
     @CreatedDate
     @JsonFormat(pattern="yyyy-MM-dd", timezone="Europe/Brussels")
+    @Column(nullable = false, updatable = false)
     protected LocalDateTime creationDate;
 
     @LastModifiedBy
@@ -44,6 +51,7 @@ public abstract class Auditable<U> {
 
     @LastModifiedDate
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Europe/Brussels")
+    @Column(nullable = false)
     protected LocalDateTime lastModifiedDate;
 
 }

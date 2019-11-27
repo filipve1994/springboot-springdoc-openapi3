@@ -114,7 +114,7 @@
 - https://www.baeldung.com/spring-httpmessageconverter-rest
 - https://www.baeldung.com/properties-with-spring
 - https://www.baeldung.com/hibernate-mappingexception-unknown-entity
-- 
+- https://www.logicbig.com/tutorials/spring-framework/spring-boot/jdbc-security-with-h2-console.html
 - 
 - 
 - 
@@ -199,7 +199,7 @@
 ## jwt security
 - https://www.google.com/search?q=spring+boot+jwt+security&rlz=1C1CHBD_enBE837BE837&oq=spring+boot+jwt+security&aqs=chrome..69i57j0l2j69i65l3.4060j0j1&sourceid=chrome&ie=UTF-8
 - 
-- 
+- https://www.callicoder.com/spring-boot-spring-security-jwt-mysql-react-app-part-1/ => perfect
 - 
 - 
 - 
@@ -443,7 +443,7 @@
 
 ## docs
 - https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#reference
-- 
+- https://docs.spring.io/spring-security/site/docs/current/reference/html5/
 - 
 - 
 - 
