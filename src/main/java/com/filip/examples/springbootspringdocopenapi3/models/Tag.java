@@ -31,7 +31,7 @@ import java.util.List;
 @EqualsAndHashCode
 @Entity
 @Table(name = "TAG")
-public class Tag extends Auditable<String> implements Serializable {
+public class Tag extends Auditable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

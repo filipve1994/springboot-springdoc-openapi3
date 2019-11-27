@@ -29,7 +29,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @Entity
 @Table(name = "USER")
-public class User extends Auditable<String> implements Serializable {
+public class User extends Auditable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -158,9 +158,16 @@ public class OpenApiConfig {
         List<SecurityRequirement> securityRequirements = new ArrayList<>();
 
         SecurityRequirement securityRequirement = new SecurityRequirement();
+        securityRequirement.addList("bearerAuth");
+
         securityRequirement.addList(API_KEY_SECURITY_REQUIREMENT);
+
         securityRequirement.addList(PETSTORE_AUTH_SECURITY_REQUIREMENT,
                 Arrays.asList(WRITE_PETS_SECURITY_REQUIREMENT_SCOPE, READ_PETS_SECURITY_REQUIREMENT_SCOPE));
+
+
+        securityRequirements.add(securityRequirement);
+
         return securityRequirements;
     }
 
@@ -337,6 +344,15 @@ public class OpenApiConfig {
                 .scheme("basic");
 
         securitySchemeMap.put("basicScheme", basicScheme);
+
+        SecurityScheme bearerAuthScheme = new SecurityScheme()
+                .type(SecurityScheme.Type.HTTP)
+                .scheme("bearer")
+                //.scheme("Bearer")
+                //.scheme("Bearer ")
+                .bearerFormat("JWT")
+                ;
+        securitySchemeMap.put("bearerAuth", bearerAuthScheme);
 
         return securitySchemeMap;
     }

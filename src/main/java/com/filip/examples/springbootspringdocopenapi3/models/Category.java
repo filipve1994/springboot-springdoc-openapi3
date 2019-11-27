@@ -31,7 +31,7 @@ import java.util.Set;
 @EqualsAndHashCode(exclude = {"pets"})
 @Entity
 @Table(name = "CATEGORY")
-public class Category extends Auditable<String> implements Serializable {
+public class Category extends Auditable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

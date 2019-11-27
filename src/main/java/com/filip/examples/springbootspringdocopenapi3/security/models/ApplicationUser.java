@@ -46,7 +46,7 @@ import java.util.Set;
                 "email"
         })
 })
-public class ApplicationUser extends Auditable<String> implements Serializable {
+public class ApplicationUser extends Auditable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

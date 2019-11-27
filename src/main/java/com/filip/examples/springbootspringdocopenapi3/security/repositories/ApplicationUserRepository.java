@@ -15,6 +15,8 @@ public interface ApplicationUserRepository extends JpaRepository<ApplicationUser
 
     List<ApplicationUser> findByIdIn(List<Long> userIds);
 
+    List<ApplicationUser> findByUsernameIn(List<String> usernames);
+
     ApplicationUser findByUsername(String username);
 
     Boolean existsByUsername(String username);

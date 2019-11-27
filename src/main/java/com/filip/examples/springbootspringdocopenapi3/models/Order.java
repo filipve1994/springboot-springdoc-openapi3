@@ -30,7 +30,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @Entity
 @Table(name = "ORDERS")
-public class Order extends Auditable<String> implements Serializable {
+public class Order extends Auditable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

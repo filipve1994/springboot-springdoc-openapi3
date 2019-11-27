@@ -27,7 +27,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @Entity
 @Table(name = "MOVIE")
-public class Movie extends Auditable<String> implements Serializable {
+public class Movie extends Auditable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
